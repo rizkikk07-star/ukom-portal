@@ -78,14 +78,14 @@ export default function UkomBot() {
             <form onSubmit={handleSubmit} className="flex gap-2">
               <input 
                 type="text" 
-                value={input}
+                value={input || ''}
                 onChange={handleInputChange}
                 placeholder="Tanya AI UKOM..."
                 className="flex-1 px-4 py-2 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition"
               />
               <button 
                 type="submit" 
-                disabled={isLoading || !input.trim()}
+                disabled={isLoading || !input?.trim()}
                 className="bg-slate-900 text-white px-4 py-2 rounded-xl hover:bg-slate-800 disabled:opacity-50 transition cursor-pointer"
               >
                 ➤
