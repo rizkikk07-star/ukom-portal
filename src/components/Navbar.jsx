@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/navigation';
 import { usePathname } from 'next/navigation';
 import { 
   Camera, 
@@ -13,7 +12,8 @@ import {
   X, 
   Sparkles,
   PhoneCall,
-  ExternalLink
+  ExternalLink,
+  Trophy
 } from 'lucide-react';
 
 export default function Navbar() {
@@ -39,6 +39,7 @@ export default function Navbar() {
     { name: 'Semak Status', href: '/semak', icon: Search },
     { name: 'Brand Kit', href: '/brand-kit', icon: Download },
     { name: 'Arkib & Galeri', href: '/arkib', icon: Images },
+    { name: 'UKOM Quest 🏆', href: '/gamifikasi', icon: Trophy },
   ];
 
   return (
@@ -68,7 +69,7 @@ export default function Navbar() {
             <a 
               href="https://wa.me/60197654321?text=Salam%20UKOM%20IPGKTHO,%20saya%20ingin%20bertanya" 
               target="_blank" 
-              rel="noreferrer"
+              rel="noreferrer" 
               className="text-emerald-400 hover:text-emerald-300 flex items-center gap-1 font-medium"
             >
               <PhoneCall className="w-3 h-3" />
@@ -89,16 +90,15 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* Brand Logo & Title */}
           <a href="/" className="flex items-center gap-3 group">
-            {/* Embedded Stylized Logo */}
-            <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-900 via-brand-700 to-sky-600 p-0.5 shadow-md flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
+            <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-blue-900 via-blue-700 to-sky-600 p-0.5 shadow-md flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
               <div className="w-full h-full bg-slate-900/90 rounded-[10px] flex items-center justify-center text-white">
                 <Camera className="w-5 h-5 text-amber-400" />
               </div>
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-xl font-black tracking-tight text-brand-950">UKOM</span>
-                <span className="px-1.5 py-0.5 rounded bg-brand-100 text-brand-800 text-[10px] font-black uppercase">
+                <span className="text-xl font-black tracking-tight text-slate-900">UKOM</span>
+                <span className="px-1.5 py-0.5 rounded bg-blue-100 text-blue-800 text-[10px] font-black uppercase">
                   IPGKTHO
                 </span>
               </div>
@@ -109,7 +109,7 @@ export default function Navbar() {
           </a>
 
           {/* Desktop Nav Links */}
-          <div className="hidden md:flex items-center space-x-1 lg:space-x-2">
+          <div className="hidden md:flex items-center space-x-1">
             {navLinks.map((link) => {
               const Icon = link.icon;
               const isActive = pathname === link.href;
@@ -119,11 +119,13 @@ export default function Navbar() {
                   href={link.href}
                   className={`px-3 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-1.5 ${
                     isActive
-                      ? 'bg-brand-50 text-brand-700 font-semibold shadow-xs'
-                      : 'text-slate-600 hover:text-brand-700 hover:bg-slate-50'
+                      ? 'bg-blue-50 text-blue-700 font-semibold shadow-xs'
+                      : link.name.includes('🏆')
+                      ? 'text-amber-700 bg-amber-50 hover:bg-amber-100 font-bold border border-amber-200'
+                      : 'text-slate-600 hover:text-blue-700 hover:bg-slate-50'
                   }`}
                 >
-                  <Icon className={`w-4 h-4 ${isActive ? 'text-brand-600' : 'text-slate-400'}`} />
+                  <Icon className={`w-4 h-4 ${isActive ? 'text-blue-600' : link.name.includes('🏆') ? 'text-amber-500' : 'text-slate-400'}`} />
                   <span>{link.name}</span>
                 </a>
               );
@@ -131,10 +133,10 @@ export default function Navbar() {
           </div>
 
           {/* Right CTA */}
-          <div className="hidden md:flex items-center space-x-3">
+          <div className="hidden lg:flex items-center space-x-3">
             <a
               href="/tempahan"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold text-white bg-gradient-to-r from-brand-700 to-sky-600 hover:from-brand-800 hover:to-sky-700 shadow-md shadow-brand-700/20 hover:shadow-lg transition-all active:scale-95"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-md shadow-blue-600/20 hover:shadow-lg transition-all active:scale-95"
             >
               <Sparkles className="w-4 h-4 text-amber-300" />
               <span>Tempah Liputan</span>
@@ -167,11 +169,13 @@ export default function Navbar() {
                   onClick={() => setIsOpen(false)}
                   className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-base font-medium ${
                     isActive
-                      ? 'bg-brand-50 text-brand-700 font-semibold'
+                      ? 'bg-blue-50 text-blue-700 font-semibold'
+                      : link.name.includes('🏆')
+                      ? 'bg-amber-50 text-amber-800 font-bold border border-amber-200'
                       : 'text-slate-700 hover:bg-slate-50'
                   }`}
                 >
-                  <Icon className={`w-5 h-5 ${isActive ? 'text-brand-600' : 'text-slate-400'}`} />
+                  <Icon className={`w-5 h-5 ${isActive ? 'text-blue-600' : link.name.includes('🏆') ? 'text-amber-500' : 'text-slate-400'}`} />
                   <span>{link.name}</span>
                 </a>
               );
@@ -180,7 +184,7 @@ export default function Navbar() {
               <a
                 href="/tempahan"
                 onClick={() => setIsOpen(false)}
-                className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-lg bg-brand-700 text-white font-bold text-sm shadow-md"
+                className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-lg bg-blue-600 text-white font-bold text-sm shadow-md"
               >
                 <Sparkles className="w-4 h-4 text-amber-300" />
                 <span>Borang Tempahan Media</span>
