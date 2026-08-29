@@ -8,7 +8,7 @@ export default function Gamifikasi() {
   const [nama, setNama] = useState('');
   const [laporan, setLaporan] = useState('');
   const [loading, setLoading] = useState(false);
-  const [aiResponse, setAiResponse] = useState(null);
+  const [panelResponse, setPanelResponse] = useState(null);
 
   const fetchLeaderboard = async () => {
     try {
@@ -30,17 +30,17 @@ export default function Gamifikasi() {
   const handleClaimXP = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setAiResponse(null);
+    setPanelResponse(null);
 
     try {
-      // 1. Hantar kepada AI Google untuk dinilai
+      // 1. Hantar kepada Panel Penilai UKOM untuk dinilai
       const res = await fetch('/api/nilai-tugas', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ nama, laporanTugas: laporan }),
       });
-      const aiData = await res.json();
-      const dapatXP = aiData.xp || 30;
+      const data = await res.json();
+      const dapatXP = data.xp || 30;
 
       // 2. Semak jika krew sudah wujud di pangkalan data
       let { data: krewSediaAda } = await supabase
@@ -67,7 +67,7 @@ export default function Gamifikasi() {
           .insert([{ nama_krew: nama.trim(), xp_terkumpul: xpBaru, tugasan_diselesaikan: 1 }]);
       }
 
-      setAiResponse({ xp: dapatXP, mesej: aiData.ulasan, totalXp: xpBaru });
+      setPanelResponse({ xp: dapatXP, mesej: data.ulasan, totalXp: xpBaru });
       setLaporan('');
       fetchLeaderboard();
     } catch (error) {
@@ -86,12 +86,12 @@ export default function Gamifikasi() {
         <h1 className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400 mb-2">
           UKOM Quest & Leaderboard 🏆
         </h1>
-        <p className="text-slate-400 mb-10">Lapor tugasan media anda, biarkan Juri AI menilai, dan kumpul XP untuk tebus anugerah kelak!</p>
+        <p className="text-slate-400 mb-10">Lapor tugasan media anda, dapatkan pengesahan merit daripada Panel Penilai UKOM, dan kumpul XP untuk anugerah khas!</p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Form Lapor Tugas */}
           <div className="bg-slate-800 p-6 rounded-3xl border border-slate-700 shadow-xl">
-            <h2 className="text-xl font-bold mb-4 flex items-center gap-2">✍️ Lapor Misi (Claim XP)</h2>
+            <h2 className="text-xl font-bold mb-4 flex items-center gap-2">✍️ Lapor Misi Tugasan (Claim XP)</h2>
             <form onSubmit={handleClaimXP} className="space-y-4">
               <div>
                 <label className="block text-xs font-bold text-slate-400 uppercase mb-1">Nama Krew</label>
@@ -120,27 +120,27 @@ export default function Gamifikasi() {
                 type="submit" 
                 className="w-full py-3.5 bg-gradient-to-r from-emerald-500 to-teal-600 font-bold rounded-xl hover:scale-[1.02] transition disabled:opacity-50 cursor-pointer shadow-lg shadow-emerald-500/20"
               >
-                {loading ? 'AI Sedang Menilai...' : 'Hantar kepada AI Juri 🚀'}
+                {loading ? 'Sedang Menilai Tugasan & Merit...' : 'Hantar Laporan Misi 🚀'}
               </button>
             </form>
 
-            {/* AI Result Box */}
-            {aiResponse && (
+            {/* Panel Result Box */}
+            {panelResponse && (
               <div className="mt-6 p-5 bg-gradient-to-br from-indigo-900 to-purple-900 rounded-2xl border border-purple-500/30 animate-fade-in shadow-xl">
                 <div className="flex justify-between items-start mb-2">
-                  <span className="text-purple-300 font-bold text-sm">Penilaian Google AI:</span>
+                  <span className="text-purple-300 font-bold text-sm">Ulasan Panel Penilai UKOM:</span>
                   <span className="bg-yellow-400 text-yellow-900 font-black px-3 py-1 rounded-full text-xs shadow-sm">
-                    + {aiResponse.xp} XP
+                    + {panelResponse.xp} XP
                   </span>
                 </div>
-                <p className="text-white text-sm italic leading-relaxed">"{aiResponse.mesej}"</p>
+                <p className="text-white text-sm italic leading-relaxed">"{panelResponse.mesej}"</p>
               </div>
             )}
           </div>
 
           {/* Leaderboard Table */}
           <div className="bg-slate-800 p-6 rounded-3xl border border-slate-700 shadow-xl flex flex-col">
-            <h2 className="text-xl font-bold mb-4 flex items-center gap-2">🔥 Papan Pendahulu</h2>
+            <h2 className="text-xl font-bold mb-4 flex items-center gap-2">🔥 Papan Pendahulu Krew</h2>
             <div className="space-y-3 flex-1 overflow-y-auto max-h-[420px] pr-1">
               {leaderboard.map((krew, index) => (
                 <div key={krew.id || index} className="flex items-center justify-between p-4 bg-slate-900 rounded-2xl border border-slate-700/50 hover:border-emerald-500/50 transition">
@@ -163,7 +163,7 @@ export default function Gamifikasi() {
               {leaderboard.length === 0 && (
                 <div className="text-center py-12 text-slate-500">
                   <p className="text-3xl mb-2">🎮</p>
-                  <p className="font-medium text-sm">Belum ada rekod krew. Jadi orang pertama yang claim XP!</p>
+                  <p className="font-medium text-sm">Belum ada rekod krew. Jadi orang pertama yang lapor misi!</p>
                 </div>
               )}
             </div>

@@ -70,12 +70,12 @@ export default function Home() {
             <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-yellow-300/30 via-amber-200/20 to-transparent rounded-bl-full pointer-events-none"></div>
             <div className="w-14 h-14 bg-gradient-to-br from-yellow-400 to-amber-500 text-slate-900 rounded-2xl flex items-center justify-center mb-5 text-2xl group-hover:scale-110 transition shadow-md shadow-amber-500/25">🏆</div>
             <div className="inline-block px-2.5 py-0.5 mb-2.5 text-[10px] font-black uppercase tracking-wider bg-amber-100 text-amber-800 rounded-full border border-amber-200">
-              AI Quest & XP
+              Merit & Quest
             </div>
             <h3 className="text-lg font-black text-slate-900 mb-2 flex items-center gap-1.5">
               UKOM Quest & XP
             </h3>
-            <p className="text-slate-600 text-sm leading-relaxed">Lapor tugasan krew, kumpul mata XP daripada Juri AI, dan bersaing dalam papan pendahulu krew!</p>
+            <p className="text-slate-600 text-sm leading-relaxed">Lapor tugasan krew, kumpul mata merit XP daripada Panel Penilai UKOM, dan rebut kedudukan teratas!</p>
           </Link>
         </div>
       </div>
