@@ -1,6 +1,7 @@
 import './globals.css';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import UkomBot from '../components/UkomBot';
 
 export const metadata = {
   title: 'Pusat Komunikasi & Media IPGKTHO | UKOM',
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
         <main className="flex-grow">
           {children}
         </main>
+        <UkomBot />
         <Footer />
       </body>
     </html>
