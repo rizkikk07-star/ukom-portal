@@ -1,6 +1,7 @@
--- Skrip Jadual Supabase untuk Borang Tempahan Media UKOM IPGKTHO
+-- Skrip Jadual Supabase untuk Portal UKOM IPGKTHO
 -- Jalankan skrip ini dalam Supabase SQL Editor:
 
+-- 1. JADUAL TEMPAHAN MEDIA
 CREATE TABLE IF NOT EXISTS public.tempahan_media (
     id BIGSERIAL PRIMARY KEY,
     tracking_id VARCHAR(50) UNIQUE NOT NULL,
@@ -15,17 +16,21 @@ CREATE TABLE IF NOT EXISTS public.tempahan_media (
     created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- Enable Row Level Security (RLS)
 ALTER TABLE public.tempahan_media ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Public Insert tempahan_media" ON public.tempahan_media FOR INSERT WITH CHECK (true);
+CREATE POLICY "Public Read tempahan_media" ON public.tempahan_media FOR SELECT USING (true);
+CREATE POLICY "Public Update tempahan_media" ON public.tempahan_media FOR UPDATE USING (true) WITH CHECK (true);
 
--- 1. Benarkan sesiapa sahaja memasukkan data permohonan baru
-CREATE POLICY "Public Insert tempahan_media" ON public.tempahan_media
-    FOR INSERT WITH CHECK (true);
+-- 2. JADUAL LEADERBOARD GAMIFIKASI KREW
+CREATE TABLE IF NOT EXISTS public.krew_leaderboard (
+    id BIGSERIAL PRIMARY KEY,
+    nama_krew VARCHAR(255) UNIQUE NOT NULL,
+    xp_terkumpul INTEGER DEFAULT 0,
+    tugasan_diselesaikan INTEGER DEFAULT 1,
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
 
--- 2. Benarkan sesiapa sahaja membaca status berdasarkan tracking_id & senarai admin
-CREATE POLICY "Public Read tempahan_media" ON public.tempahan_media
-    FOR SELECT USING (true);
-
--- 3. Benarkan fungsi kemaskini status, krew dan peratusan di Papan Pemuka Admin
-CREATE POLICY "Public Update tempahan_media" ON public.tempahan_media
-    FOR UPDATE USING (true) WITH CHECK (true);
+ALTER TABLE public.krew_leaderboard ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Public Insert krew_leaderboard" ON public.krew_leaderboard FOR INSERT WITH CHECK (true);
+CREATE POLICY "Public Read krew_leaderboard" ON public.krew_leaderboard FOR SELECT USING (true);
+CREATE POLICY "Public Update krew_leaderboard" ON public.krew_leaderboard FOR UPDATE USING (true) WITH CHECK (true);
