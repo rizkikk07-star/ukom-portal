@@ -9,7 +9,7 @@ export default function UkomBot() {
     {
       id: '1',
       role: 'assistant',
-      content: 'Hai! Saya Pembantu Maya Pintar UKOM IPGKTHO 🤖✨. Ada apa-apa yang boleh saya bantu mengenai liputan media, tempahan, atau brand kit kampus?'
+      content: 'Hai! Saya Pembantu Maya Pintar UKOM IPGKTHO 🤖✨. Ada apa-apa yang boleh saya bantu mengenai liputan media, tempahan peralatan, atau brand kit kampus?'
     }
   ]);
 
@@ -65,19 +65,19 @@ export default function UkomBot() {
       }
     } catch (err) {
       console.error('Chat Error:', err);
-      // Fallback jawapan pintar setempat jika berlaku ralat rangkaian / API
-      let fallbackText = "Untuk menempah liputan media, sila ke pautan /tempahan. Bagi muat turun logo rasmi, sila ke /brand-kit, atau semak status di /semak.";
+      // Fallback jawapan pintar setempat jika berlaku ralat rangkaian / kuota
+      let fallbackText = "Untuk menempah liputan media atau jurugambar, sila ke pautan /tempahan. Bagi muat turun logo rasmi, sila ke /brand-kit, atau semak status di /semak.";
       const lower = userPrompt.toLowerCase();
-      if (lower.includes('tempah') || lower.includes('borang')) {
-        fallbackText = "Untuk tempahan fotografi atau videografi, sila isi borang di menu /tempahan untuk menerima Tracking ID.";
+      if (lower.includes('tempah') || lower.includes('borang') || lower.includes('pa') || lower.includes('jurugambar')) {
+        fallbackText = "Untuk tempahan fotografi, videografi, atau PA Sistem, sila klik 'Tempah Liputan Media' di halaman utama atau terus isi borang di /tempahan untuk menerima Tracking ID.";
       } else if (lower.includes('logo') || lower.includes('warna') || lower.includes('brand')) {
-        fallbackText = "Logo rasmi IPGKTHO dan templat Canva boleh dimuat turun di halaman /brand-kit.";
+        fallbackText = "Logo rasmi IPGKTHO (resolusi tinggi & latar belakang telus) serta templat persembahan Canva boleh dimuat turun di halaman /brand-kit.";
       } else if (lower.includes('semak') || lower.includes('status')) {
-        fallbackText = "Sila masukkan nombor Tracking ID anda di halaman /semak untuk melihat status kerja.";
+        fallbackText = "Sila masukkan nombor Tracking ID anda di halaman /semak untuk melihat status proses kerja dan krew bertugas.";
       }
 
       setMessages((prev) => [
-        ...prev,
+        ...prev.filter(m => m.content),
         {
           id: (Date.now() + 2).toString(),
           role: 'assistant',
@@ -111,7 +111,7 @@ export default function UkomBot() {
               <div>
                 <h3 className="font-bold text-sm leading-tight">UKOM AI Assistant</h3>
                 <p className="text-[10px] text-emerald-300 flex items-center gap-1.5 font-medium">
-                  <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></span> Gemini 1.5 Flash Aktif
+                  <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></span> Gemini AI Aktif
                 </p>
               </div>
             </div>
@@ -125,22 +125,24 @@ export default function UkomBot() {
 
           {/* Ruang Mesej Berbual */}
           <div className="flex-1 p-4 overflow-y-auto bg-slate-50 space-y-4 text-sm">
-            {messages.map((msg) => (
-              <div
-                key={msg.id}
-                className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
-              >
+            {messages
+              .filter((msg) => msg.content && msg.content.trim() !== '')
+              .map((msg) => (
                 <div
-                  className={`max-w-[85%] p-3.5 leading-relaxed ${
-                    msg.role === 'user'
-                      ? 'bg-blue-600 text-white rounded-2xl rounded-tr-xs shadow-sm font-medium'
-                      : 'bg-white border border-gray-200 text-slate-800 rounded-2xl rounded-tl-xs shadow-xs'
-                  }`}
+                  key={msg.id}
+                  className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
-                  {msg.content}
+                  <div
+                    className={`max-w-[85%] p-3.5 leading-relaxed whitespace-pre-wrap ${
+                      msg.role === 'user'
+                        ? 'bg-blue-600 text-white rounded-2xl rounded-tr-xs shadow-sm font-medium'
+                        : 'bg-white border border-gray-200 text-slate-800 rounded-2xl rounded-tl-xs shadow-xs'
+                    }`}
+                  >
+                    {msg.content}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
 
             {/* Petunjuk AI Sedang Menjana Jawapan */}
             {isLoading && (
