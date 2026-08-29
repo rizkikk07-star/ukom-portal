@@ -1,4 +1,5 @@
 import LiveTicker from '../components/LiveTicker';
+import UkomBot from '../components/UkomBot';
 import Link from 'next/link';
 
 export default function Home() {
@@ -60,6 +61,9 @@ export default function Home() {
           </Link>
         </div>
       </div>
+
+      {/* Pembantu Maya Chatbot UKOM */}
+      <UkomBot />
     </div>
   );
 }
