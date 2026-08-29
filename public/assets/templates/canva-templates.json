@@ -1,0 +1,36 @@
+﻿{
+  "templates": [
+    {
+      "id": "canva-poster-rasmi",
+      "title": "Templat Poster Hebahan Rasmi Kampus",
+      "category": "Poster",
+      "dimensions": "1080 x 1350 px (Instagram Portrait)",
+      "url": "https://www.canva.com/design/sample-poster-ipgktho",
+      "badge": "Canva Edu / Pro"
+    },
+    {
+      "id": "canva-banner-program",
+      "title": "Templat Banner & Backdrop Pentas",
+      "category": "Backdrop",
+      "dimensions": "8 x 4 Kaki (Vektor High-Res)",
+      "url": "https://www.canva.com/design/sample-backdrop-ipgktho",
+      "badge": "Canva"
+    },
+    {
+      "id": "canva-sijil-penghargaan",
+      "title": "Templat Sijil Penghargaan & Penyertaan",
+      "category": "Sijil",
+      "dimensions": "A4 Landskap",
+      "url": "https://www.canva.com/design/sample-certificate-ipgktho",
+      "badge": "Canva"
+    },
+    {
+      "id": "canva-thumbnail-youtube",
+      "title": "Templat Thumbnail Video & Siaran Langsung",
+      "category": "Media",
+      "dimensions": "1920 x 1080 px (16:9)",
+      "url": "https://www.canva.com/design/sample-thumbnail-ipgktho",
+      "badge": "Canva"
+    }
+  ]
+}

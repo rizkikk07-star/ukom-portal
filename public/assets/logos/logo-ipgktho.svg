@@ -1,0 +1,19 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100" fill="none">
+  <!-- IPGKTHO Emblem -->
+  <rect x="10" y="10" width="80" height="80" rx="16" fill="url(#ipg_grad)" stroke="#F59E0B" stroke-width="3"/>
+  <path d="M50 22 L70 34 L70 66 L50 78 L30 66 L30 34 Z" fill="#072849" stroke="#FFD700" stroke-width="2"/>
+  <!-- Torch / Book Icon -->
+  <path d="M42 58 C42 50 50 48 50 40 C50 48 58 50 58 58 Z" fill="#F59E0B"/>
+  <path d="M38 64 C44 62 50 62 50 62 C50 62 56 62 62 64 L60 67 C55 65 50 65 50 65 C50 65 45 65 40 67 Z" fill="#FFFFFF"/>
+  <defs>
+    <linearGradient id="ipg_grad" x1="10" y1="10" x2="90" y2="90" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B3F6E"/>
+      <stop offset="1" stop-color="#0159A1"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Text -->
+  <text x="105" y="36" font-family="'Inter', sans-serif" font-weight="800" font-size="17" fill="#072849">IPG KAMPUS</text>
+  <text x="105" y="58" font-family="'Inter', sans-serif" font-weight="900" font-size="19" fill="#0159A1">TUN HUSSEIN ONN</text>
+  <text x="105" y="78" font-family="'Inter', sans-serif" font-weight="600" font-size="11" fill="#D97706" letter-spacing="1.5">BATU PAHAT, JOHOR</text>
+</svg>

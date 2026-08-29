@@ -1,0 +1,13 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" fill="none">
+  <!-- KPM Jata & Emblem Representation -->
+  <circle cx="50" cy="50" r="42" fill="#0B3B8B" stroke="#FFD700" stroke-width="4"/>
+  <circle cx="50" cy="50" r="34" fill="#FFFFFF"/>
+  <path d="M50 22 L55 35 L68 35 L58 43 L62 56 L50 48 L38 56 L42 43 L32 35 L45 35 Z" fill="#D32F2F"/>
+  <path d="M35 58 C35 58 42 68 50 68 C58 68 65 58 65 58 C65 58 58 63 50 63 C42 63 35 58 35 58 Z" fill="#0B3B8B"/>
+  <circle cx="50" cy="50" r="6" fill="#FFD700"/>
+  
+  <!-- Typography -->
+  <text x="105" y="38" font-family="'Inter', sans-serif" font-weight="900" font-size="18" fill="#0B3B8B" letter-spacing="1">KEMENTERIAN</text>
+  <text x="105" y="58" font-family="'Inter', sans-serif" font-weight="900" font-size="18" fill="#D32F2F" letter-spacing="1">PENDIDIKAN</text>
+  <text x="105" y="78" font-family="'Inter', sans-serif" font-weight="900" font-size="18" fill="#0B3B8B" letter-spacing="1">MALAYSIA</text>
+</svg>

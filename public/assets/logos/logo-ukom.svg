@@ -1,0 +1,22 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" fill="none">
+  <!-- UKOM Logo Modern Emblem -->
+  <rect x="10" y="12" width="76" height="76" rx="20" fill="url(#ukom_bg)" stroke="#38BDF8" stroke-width="2"/>
+  <!-- Broadcast / Media Waves & Lens -->
+  <circle cx="48" cy="50" r="14" fill="#0284C7"/>
+  <circle cx="48" cy="50" r="7" fill="#FFFFFF"/>
+  <path d="M30 50 A 18 18 0 0 1 66 50" stroke="#38BDF8" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <path d="M24 50 A 24 24 0 0 1 72 50" stroke="#BAE6FD" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <path d="M48 64 L48 74" stroke="#F59E0B" stroke-width="3.5" stroke-linecap="round"/>
+  
+  <defs>
+    <linearGradient id="ukom_bg" x1="10" y1="12" x2="86" y2="88" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0C4A6E"/>
+      <stop offset="1" stop-color="#082F49"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Text -->
+  <text x="100" y="40" font-family="'Inter', sans-serif" font-weight="900" font-size="24" fill="#0369A1" letter-spacing="1">UKOM</text>
+  <text x="100" y="58" font-family="'Inter', sans-serif" font-weight="700" font-size="12" fill="#0F172A" letter-spacing="0.5">UNIT KOMUNIKASI KORPORAT</text>
+  <text x="100" y="74" font-family="'Inter', sans-serif" font-weight="600" font-size="10" fill="#64748B" letter-spacing="0.8">IPG KAMPUS TUN HUSSEIN ONN</text>
+</svg>
